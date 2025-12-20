@@ -1,0 +1,17 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - rollout.yaml
+  - service.yaml
+  - configmap.yaml
+
+commonLabels:
+  app.kubernetes.io/name: version-api
+  app.kubernetes.io/component: api
+  app.kubernetes.io/part-of: backend
+  app.kubernetes.io/managed-by: kustomize
+  fasti.sh/team: backend
+
+commonAnnotations:
+  backstage.io/kubernetes-id: version-api

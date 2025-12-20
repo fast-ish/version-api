@@ -1,0 +1,34 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: version-api
+  title: Version API (Demo)
+  description: Demo application for showcasing Argo Rollouts canary deployments
+  annotations:
+    github.com/project-slug: fast-ish/version-api-demo
+    backstage.io/kubernetes-id: version-api
+    backstage.io/kubernetes-label-selector: 'app.kubernetes.io/name=version-api'
+    grafana/dashboard-selector: 'tags @> 'service' && tags @> 'version-api''
+    argocd/app-name: backend-version-api
+    prometheus.io/rule: 'version-api-slo'
+  tags:
+    - demo
+    - canary
+    - argo-rollouts
+    - backend
+  links:
+    - url: https://argocd.devops.stxkxs.io/applications/backend-version-api
+      title: ArgoCD Application
+      icon: dashboard
+    - url: https://github.com/fast-ish/version-api-demo
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  owner: group:backend
+  lifecycle: experimental
+  system: demo
+  providesApis:
+    - version-api
+  dependsOn:
+    - resource:team-backend-namespace

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: version-api-config
+  labels:
+    app.kubernetes.io/name: version-api
+    app.kubernetes.io/component: api
+    app.kubernetes.io/part-of: backend
+data:
+  APP_NAME: "version-api"
+  APP_DESCRIPTION: "Demo API for canary deployment showcase"
+  LOG_LEVEL: "INFO"
+  ROLLOUT_STRATEGY: "canary"
+  CANARY_STEPS: "20,40,60,80,100"
